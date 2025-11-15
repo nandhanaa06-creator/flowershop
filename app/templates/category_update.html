@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    body {
+        background: linear-gradient(145deg, #f3faff, #e7f3ff);
+        font-family: "Poppins", sans-serif;
+    }
+
+    .form-container {
+        width: 90%;
+        max-width: 550px;
+        margin: 60px auto;
+        background: rgba(255, 255, 255, 0.85);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0px 10px 35px rgba(0,0,0,0.12);
+        backdrop-filter: blur(10px);
+        text-align: center;
+    }
+
+    .form-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #084c61;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+
+    .title-line {
+        width: 60px;
+        height: 4px;
+        background: #16c79a;
+        margin: 10px auto 25px auto;
+        border-radius: 10px;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 14px;
+        margin: 15px 0;
+        border: 2px solid #d9e8f0;
+        border-radius: 12px;
+        outline: none;
+        font-size: 16px;
+        font-family: "Poppins", sans-serif;
+        background: white;
+        transition: 0.25s ease;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #16c79a;
+        box-shadow: 0px 0px 8px rgba(22, 199, 154, 0.3);
+    }
+
+    textarea {
+        height: 120px;
+        resize: none;
+    }
+
+    button {
+        background: linear-gradient(135deg, #2998ff, #004e92);
+        border: none;
+        padding: 14px 30px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 30px;
+        color: white;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.3s ease;
+    }
+
+    button:hover {
+        transform: translateY(-3px);
+        opacity: 0.9;
+    }
+</style>
+
+
+<div class="form-container">
+    <h1 class="form-title">Update Category</h1>
+    <div class="title-line"></div>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input type="text" 
+               name="name"
+               placeholder="Category Name"
+               value="{{ category.name }}">
+
+        <textarea name="description"
+                  placeholder="Category Description">{{ category.description }}</textarea>
+
+        <button type="submit">Update</button>
+    </form>
+</div>
+
+{% endblock %}

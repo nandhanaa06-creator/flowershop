@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    body {
+        background: linear-gradient(145deg, #f3faff, #e7f3ff);
+        font-family: "Poppins", sans-serif;
+    }
+
+    .category-title {
+        text-align: center;
+        font-size: 42px;
+        font-weight: 800;
+        color: #084c61;
+        margin-top: 50px;
+        letter-spacing: 3px;
+    }
+
+    .title-line {
+        width: 90px;
+        height: 5px;
+        background: #16c79a;
+        margin: 10px auto 40px auto;
+        border-radius: 10px;
+    }
+
+    /* MAIN GRID */
+    .category-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto 80px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+    }
+
+    /* CARD */
+    .category-card {
+        background: rgba(255, 255, 255, 0.8);
+        padding: 28px;
+        border-radius: 18px;
+        box-shadow: 0px 10px 35px rgba(0,0,0,0.12);
+        backdrop-filter: blur(10px);
+        transition: 0.35s ease;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        position: relative;
+    }
+
+    .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 18px 45px rgba(0,0,0,0.18);
+    }
+
+    /* CATEGORY NAME */
+    .category-name {
+        text-align: center;
+        margin-bottom: 14px;
+        position: relative;
+    }
+
+    .category-link {
+        text-decoration: none;
+        color: #079779;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        display: inline-block;
+    }
+
+    .category-link::after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 3px;
+        background: #14a89a;
+        margin: 6px auto 0 auto;
+        border-radius: 10px;
+        transition: 0.3s ease;
+    }
+
+    .category-link:hover::after {
+        width: 70px;
+    }
+
+    /* DESCRIPTION */
+    .category-description {
+        text-align: center;
+        color: #666;
+        font-size: 15px;
+        margin-bottom: 22px;
+        line-height: 1.5;
+    }
+
+    /* BUTTONS */
+    .action-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .delete-btn, .update-btn {
+        padding: 10px 22px;
+        border-radius: 25px;
+        font-weight: 600;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.25s ease;
+    }
+
+    .delete-btn {
+        background: linear-gradient(135deg, #ff4c55, #d62839);
+    }
+
+    .delete-btn:hover {
+        opacity: 0.85;
+        transform: scale(1.05);
+    }
+
+    .update-btn {
+        background: linear-gradient(135deg, #2998ff, #004e92);
+    }
+
+    .update-btn:hover {
+        opacity: 0.85;
+        transform: scale(1.05);
+    }
+</style>
+
+<h1 class="category-title">CATEGORY</h1>
+<div class="title-line"></div>
+
+<div class="category-container">
+    {% for cat in categories %}
+        <div class="category-card">
+
+            <div class="category-name">
+                <a href="{% url 'category_products' cat.id %}" class="category-link">{{ cat.name }}</a>
+            </div>
+
+            <div class="category-description">
+                {{ cat.description }}
+            </div>
+
+            <div class="action-buttons">
+                <a class="delete-btn" href="{% url 'category_delete' cat.id %}">Delete</a>
+                <a class="update-btn" href="{% url 'category_update' cat.id %}">Update</a>
+            </div>
+
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

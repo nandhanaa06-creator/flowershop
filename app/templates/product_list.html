@@ -1,0 +1,35 @@
+{%extends "base.html" %}
+{% block content %}
+    <h1>Product List</h1>
+<div class="add-btn-container">
+    {% if user.is_staff or user.is_superuser %}
+    <a class="action-btn create-btn" href="{% url 'create_product' %}">add items</a>
+    {% endif%}
+</div>
+
+    <div class="product-container">
+        {% for prod in products %}
+            <div class="product-card">
+  <a class="card-link" href="{% url 'product_details' prod.id %}">
+    <img src="{{ prod.image.url }}" alt="{{ prod.name }}">
+    
+    <div class="product-info">
+      <h3>{{ prod.name }}</h3>
+      <p class="product-price">Price: ${{ prod.price }}</p>
+      <p>{{ prod.description }}</p>
+      <p>{{prod.category}}</p>
+    </div>
+  </a>
+   {% if user.is_staff or user.is_superuser %}
+  <a class="action-btn delete-btn" href="{% url 'product_delete' prod.id %}">delete</a>
+  <a class="action-btn update-btn" href="{% url 'product_update' prod.id %}">update</a> 
+  <a class="cart-btn" href="{% url 'add_to_cart' prod.id %}">Add to Cart</a>
+
+
+  {% endif %}
+</div>
+        {% endfor %}
+    </div>
+{%endblock%}
+
+

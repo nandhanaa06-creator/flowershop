@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>{{ category.name }}</h2>
+
+<div class="product-container">
+    {% for prod in products %}
+        <div class="product-card">
+            <img src="{{ prod.image.url }}" alt="{{ prod.name }}">
+
+            <h3>{{ prod.name }}</h3>
+            <p>{{ prod.description }}</p>
+            <p>₹ {{ prod.price }}</p>
+        </div>
+    {% empty %}
+        <p>No products in this category.</p>
+    {% endfor %}
+</div>
+
+{%endblock%}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 style="text-align:center; margin-top:40px;">Your Cart 🛒</h1>
+  
+{% if cart %}
+    <div style="width:70%; margin: auto; margin-top:40px;">
+        {% for id, item in cart.items %}
+         
+    <div style="padding:15px; margin-bottom:15px; background:white;
+                border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);
+                display:flex; justify-content:space-between; align-items:center;">
+
+        <span><strong>{{ item.name }}</strong></span>
+        <span>Qty: {{ item.qty }}</span>
+        <span>₹ {{ item.price }}</span>
+
+        <a href="{% url 'remove_from_cart' id %}" 
+           style="background:#ff4d4d; padding:8px 15px; color:white; 
+                  border-radius:8px; text-decoration:none; font-weight:600;">
+            Remove
+        </a>
+    </div>
+
+
+        {% endfor %}
+    </div>
+{% else %}
+    <p style="text-align:center; margin-top:40px; color:#777;">Your cart is empty.</p>
+{% endif %}
+
+{% endblock %}
