@@ -53,6 +53,63 @@
         color: #007bff;
         text-decoration: none;
       }
+      .login-btn {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #0056b3;
+}
+
+/* Container for the two links */
+.extra-links {
+  margin-top: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Stylish "Create Account" button */
+.secondary-btn {
+  display: block;
+  padding: 10px;
+  background: #ff4d6d;
+  color: white !important;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.secondary-btn:hover {
+  background: #e63e5d;
+  transform: translateY(-2px);
+}
+
+/* Light, classy "Forgot Password?" link */
+.link-btn {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.link-btn:hover {
+  color: #0056b3;
+}
+
     </style>
   </head>
   <body>
@@ -73,8 +130,11 @@
           placeholder="Password"
           required
         /><br />
-        <button type="submit">login</button>
-        <a href="{% url 'signup'%}">signup</a>
+        <button type="submit" class="login-btn">login</button>
+        <div class="extra-links">
+         <a href="{% url 'signup' %}" class="secondary-btn">signup</a>
+         <a href="{% url 'password_reset' %}" class="link-btn">Forgot Password?</a>
+        </div>
       </form>
       
     </div>
