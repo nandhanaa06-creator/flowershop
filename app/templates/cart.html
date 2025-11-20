@@ -2,26 +2,45 @@
 {% block content %}
 
 <h1 style="text-align:center; margin-top:40px;">Your Cart 🛒</h1>
-  
+
 {% if cart %}
-    <div style="width:70%; margin: auto; margin-top:40px;">
+    <div style="width:70%; margin:auto; margin-top:40px;">
         {% for id, item in cart.items %}
-         
-    <div style="padding:15px; margin-bottom:15px; background:white;
-                border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);
-                display:flex; justify-content:space-between; align-items:center;">
 
-        <span><strong>{{ item.name }}</strong></span>
-        <span>Qty: {{ item.qty }}</span>
-        <span>₹ {{ item.price }}</span>
+        <div style="padding:15px; margin-bottom:15px; background:white;
+                    border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);
+                    display:flex; justify-content:space-between; align-items:center;">
 
-        <a href="{% url 'remove_from_cart' id %}" 
-           style="background:#ff4d4d; padding:8px 15px; color:white; 
-                  border-radius:8px; text-decoration:none; font-weight:600;">
-            Remove
-        </a>
-    </div>
+            <span><strong>{{ item.name }}</strong></span>
 
+            <!-- Quantity controls -->
+            <div style="display:flex; align-items:center; gap:10px;">
+
+                <a href="{% url 'decrease_qty' id %}"
+                   style="background:#ff8585; padding:6px 12px; color:white; 
+                          border-radius:6px; text-decoration:none; font-weight:600;">
+                    -
+                </a>
+
+                <span style="font-size:18px; font-weight:600;">{{ item.qty }}</span>
+
+                <a href="{% url 'increase_qty' id %}"
+                   style="background:#4CAF50; padding:6px 12px; color:white; 
+                          border-radius:6px; text-decoration:none; font-weight:600;">
+                    +
+                </a>
+
+            </div>
+
+            <span>₹ {{ item.price }}</span>
+
+            <a href="{% url 'remove_from_cart' id %}"
+               style="background:#ff4d4d; padding:8px 15px; color:white; 
+                      border-radius:8px; text-decoration:none; font-weight:600;">
+                Remove
+            </a>
+
+        </div>
 
         {% endfor %}
     </div>

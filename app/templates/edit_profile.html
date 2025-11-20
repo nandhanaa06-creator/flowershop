@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease-in-out;
+">
+
+    <h2 style="
+        text-align:center;
+        color:#d14984;
+        font-size:28px;
+        font-weight:700;
+        margin-bottom:20px;
+    ">
+        Edit Profile 🌸
+    </h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Username -->
+        <div class="group">
+            <label>Username</label>
+            {{ user_form.username }}
+        </div>
+
+        <!-- Email -->
+        <div class="group">
+            <label>Email</label>
+            {{ user_form.email }}
+        </div>
+
+ <div class="group" style="text-align: center;">
+    <label style="display:block; text-align:left;">Profile Picture</label>
+
+    <!-- Image Preview -->
+    <img src="{{ profile_form.instance.image.url }}" 
+         style="width:100px; height:100px; border-radius:50%; object-fit:cover;
+         border:3px solid #f12d5e; margin:10px auto; display:block;">
+
+    <!-- Pink Button -->
+    <label for="file-upload" class="upload-btn">Choose New Image</label>
+
+    {{ profile_form.image }}   <!-- this is hidden via forms.py -->
+</div>
+
+
+
+
+
+
+
+        <button type="submit" class="save-btn">Save Changes</button>
+    </form>
+</div>
+
+<style>
+.group {
+    margin-bottom: 22px;
+}
+
+.group label {
+    display: block;
+    font-weight: 600;
+    color: #e90458;
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.group input:focus {
+    border-color: #d14984;
+    box-shadow: 0 0 6px rgba(209,73,132,0.3);
+}
+
+.file-input input {
+    border: none !important;
+    padding: 5px !important;
+}
+
+.save-btn {
+    margin-top: 30px;
+    width: 100%;
+    background: #d14984;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.save-btn:hover {
+    background: #b73a70;
+    transform: scale(1.03);
+}
+
+@keyframes fadeIn {
+    from { opacity:0; transform:translateY(25px); }
+    to   { opacity:1; transform:translateY(0); }
+}
+</style>
+
+{% endblock %}

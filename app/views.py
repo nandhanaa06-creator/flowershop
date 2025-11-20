@@ -7,6 +7,8 @@ from .forms import ProductForm, CategoryForm
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.http import HttpResponseForbidden
 from .models import Contact
+from .forms import UserUpdateForm, ProfileUpdateForm
+from .models import Profile
 
 
 # Create your views here.
@@ -125,7 +127,6 @@ def signout(request):
 
 # Category List View
 @login_required
-@admin_required
 def category_list(request):
     categories = Category.objects.all().order_by('name')
     context = {
@@ -235,3 +236,56 @@ def remove_from_cart(request, product_id):
     request.session.modified = True
 
     return redirect("cart")
+
+
+def increase_qty(request, id):
+    cart = request.session.get('cart', {})
+
+    if id in cart:
+        cart[id]['qty'] += 1
+
+    request.session['cart'] = cart
+    return redirect('cart')
+
+
+def decrease_qty(request, id):
+    cart = request.session.get('cart', {})
+
+    if id in cart:
+        cart[id]['qty'] -= 1
+        if cart[id]['qty'] <= 0:
+            cart.pop(id)
+
+    request.session['cart'] = cart
+    return redirect('cart')
+
+@login_required
+def profile(request):
+    profile = Profile.objects.get(user=request.user)
+    return render(request, 'account.html', {"profile": profile})
+
+
+@login_required
+def edit_profile(request):
+
+    # If profile doesn't exist, create it (no signals required)
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    if request.method == "POST":
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('profile')
+
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=profile)
+
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+    return render(request, 'edit_profile.html', context)

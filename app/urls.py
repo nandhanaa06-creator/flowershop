@@ -47,5 +47,10 @@ urlpatterns = [
     path('password-reset-complete/',
          auth_views.PasswordResetCompleteView.as_view(template_name="password_reset_complete.html"),
          name='password_reset_complete'),
+    path('cart/increase/<str:id>/', views.increase_qty, name='increase_qty'),
+    path('cart/decrease/<str:id>/', views.decrease_qty, name='decrease_qty'),
     
+    path('profile/', views.profile, name='profile'),
+    path('profile/edit/', views.edit_profile, name='edit_profile'),
+
 ]

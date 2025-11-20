@@ -143,8 +143,10 @@
             </div>
 
             <div class="action-buttons">
+                {% if user.is_staff or user.is_superuser %}
                 <a class="delete-btn" href="{% url 'category_delete' cat.id %}">Delete</a>
                 <a class="update-btn" href="{% url 'category_update' cat.id %}">Update</a>
+                {%endif%}
             </div>
 
         </div>

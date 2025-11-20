@@ -368,7 +368,7 @@
   min-height: 100px;
 }
 
-/* Save Button */
+
 .save-btn {
   background-color: #1abc9c;
   color: #fff;
@@ -392,7 +392,7 @@
   transform: scale(0.98);
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .product-form {
     padding: 30px 25px;
@@ -436,7 +436,93 @@
 }
 
 
-    
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropbtn {
+    cursor: pointer;
+    padding: 8px 15px;
+    display: block;
+    color: #2e0707;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(19, 10, 10);
+    min-width: 150px;
+    box-shadow: 0 4px 12px rgba(24, 1, 1, 0.1);
+    border-radius: 8px;
+    z-index: 1;
+    text-align: left;
+}
+
+
+.dropdown-content a {
+    padding: 10px 15px;
+    display: block;
+    color: #333;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.dropdown-content a:hover {
+    background-color: #110101;
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.dropdown:hover .dropbtn {
+    color: #e35a5a;
+}
+
+/* Hide ugly default "Currently" + "Change" */
+.group ul, .group li, .group a {
+    display: none !important;
+}
+
+/* Hide the real file input */
+#file-upload {
+    display: none;
+}
+
+
+
+.clearable-file-input,
+.clearable-file-input * {
+    display: none !important;
+}
+
+
+.upload-btn {
+    background: #ea3d76;
+    color: rgb(254, 252, 253);
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 12px;
+    transition: 0.3s ease;
+}
+
+.upload-btn:hover {
+    background: #f7e6ed;
+    transform: scale(1.03);
+}
+
+ 
   </style>
 </head>
 
@@ -466,9 +552,16 @@
       <li><a href="{% url 'category_list' %}">Category</a></li>
       <li><a href="{% url 'product' %}">Products</a></li>
       <li><a href="{% url 'contact' %}">Contact</a></li>
-      <li><a href="{% url 'login' %}">Login</a></li>
-      <li><a href="{% url 'signup' %}">Sign Up</a></li>
-      <li><a href="{% url 'logout' %}">Logout</a></li>
+     <li class="dropdown">
+    <a href="#" class="dropbtn">Account ▾</a>
+    <div class="dropdown-content">
+        <a href="{% url 'profile' %}">Profile</a>
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+</li>
+
        
     </ul>
   </nav>
