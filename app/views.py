@@ -289,3 +289,5 @@ def edit_profile(request):
         'profile_form': profile_form
     }
     return render(request, 'edit_profile.html', context)
+
+

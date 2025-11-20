@@ -1,42 +1,102 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 style="text-align:center; margin-top:40px;">Your Cart 🛒</h1>
+<h1 style="
+    text-align:center; 
+    margin-top:40px; 
+    font-size:32px;
+    color:#d14984;
+    font-weight:700;
+">
+    YOUR CART 🛒
+    <div style="
+        width:80px; 
+        height:4px; 
+        background:#f7b6c6; 
+        border-radius:10px; 
+        margin:10px auto 0;
+    "></div>
+</h1>
 
 {% if cart %}
     <div style="width:70%; margin:auto; margin-top:40px;">
         {% for id, item in cart.items %}
 
-        <div style="padding:15px; margin-bottom:15px; background:white;
-                    border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);
-                    display:flex; justify-content:space-between; align-items:center;">
-
-            <span><strong>{{ item.name }}</strong></span>
+        <div style="
+            padding:18px; 
+            margin-bottom:20px; 
+            background:white;
+            border-radius:15px; 
+            border:2px solid #f7b6c6;
+            box-shadow:0 4px 12px rgba(0,0,0,0.08);
+            display:flex; 
+            justify-content:space-between; 
+            align-items:center;
+            transition:0.3s;
+        ">
+            <!-- Product Name -->
+            <span style="font-size:18px; font-weight:600; color:#d14984;">
+                {{ item.name }}
+            </span>
 
             <!-- Quantity controls -->
             <div style="display:flex; align-items:center; gap:10px;">
 
+                <!-- Decrease -->
                 <a href="{% url 'decrease_qty' id %}"
-                   style="background:#ff8585; padding:6px 12px; color:white; 
-                          border-radius:6px; text-decoration:none; font-weight:600;">
-                    -
+                   style="
+                       background:#ffb3c6; 
+                       padding:6px 12px; 
+                       color:#8a0037; 
+                       border-radius:6px; 
+                       text-decoration:none; 
+                       font-weight:700;
+                       box-shadow:0 2px 4px rgba(0,0,0,0.1);
+                   ">
+                    –
                 </a>
 
-                <span style="font-size:18px; font-weight:600;">{{ item.qty }}</span>
+                <span style="
+                    font-size:18px; 
+                    font-weight:700; 
+                    color:#d14984;
+                ">
+                    {{ item.qty }}
+                </span>
 
+                <!-- Increase -->
                 <a href="{% url 'increase_qty' id %}"
-                   style="background:#4CAF50; padding:6px 12px; color:white; 
-                          border-radius:6px; text-decoration:none; font-weight:600;">
+                   style="
+                       background:#d14984; 
+                       padding:6px 12px; 
+                       color:white; 
+                       border-radius:6px; 
+                       text-decoration:none; 
+                       font-weight:700;
+                       box-shadow:0 2px 4px rgba(0,0,0,0.15);
+                   ">
                     +
                 </a>
 
             </div>
 
-            <span>₹ {{ item.price }}</span>
+            <!-- Price (pink text) -->
+            <span style="font-size:18px; font-weight:700; color:#b7376f;">
+                ₹ {% widthratio item.price 1 item.qty %}
+            </span>
 
+            <!-- Remove Button -->
             <a href="{% url 'remove_from_cart' id %}"
-               style="background:#ff4d4d; padding:8px 15px; color:white; 
-                      border-radius:8px; text-decoration:none; font-weight:600;">
+               style="
+                   background:#ff6f91; 
+                   padding:10px 18px; 
+                   color:white; 
+                   border-radius:8px; 
+                   text-decoration:none; 
+                   font-weight:700;
+                   box-shadow:0 3px 6px rgba(0,0,0,0.15);
+                   transition:0.2s;
+               ">
                 Remove
             </a>
 
@@ -44,8 +104,16 @@
 
         {% endfor %}
     </div>
+
 {% else %}
-    <p style="text-align:center; margin-top:40px; color:#777;">Your cart is empty.</p>
+    <p style="
+        text-align:center; 
+        margin-top:40px; 
+        color:#b7376f;
+        font-size:18px;
+    ">
+        Your cart is empty 💗
+    </p>
 {% endif %}
 
 {% endblock %}

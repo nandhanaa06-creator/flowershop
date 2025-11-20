@@ -1,18 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
 
-{%extends "base.html"%}
-{%block content%}
+<div style="
+    max-width: 900px;
+    margin: 60px auto;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 40px 50px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    animation: fadeIn 0.6s ease-in-out;
+">
 
+    <h1 style="
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        color: #d14984;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+    ">
+        About Our Flower Shop 🌷
+    </h1>
 
-<h1 style="color: rgb(90, 9, 9);">About Our Flower Shop</h1>
+    <div style="
+        width: 80px;
+        height: 4px;
+        background: #f7b6c6;
+        border-radius: 10px;
+        margin: 10px auto 30px;
+    "></div>
 
-<p>Welcome to Blossom Lane, where every petal has a story.
-We believe flowers are more than decorations. They are smiles you can hold, emotions you can gift, and memories wrapped in soft colors.
+    <p style="
+        font-size: 18px;
+        line-height: 1.8;
+        color: #333;
+        text-align: center;
+    ">
+        Welcome to <strong style="color:#d14984;">Blossom Lane</strong>, where every petal has a story.
+        Flowers are more than decorations—they are smiles you can hold,
+        emotions you can gift, and memories wrapped in soft colors.
+    </p>
 
-Our shop offers fresh flowers handpicked daily from trusted local growers. Whether it’s a birthday, a celebration, a wedding, or just a moment you want to make special, we create bouquets and arrangements with care, creativity, and love.
+    <p style="
+        font-size: 18px;
+        line-height: 1.8;
+        color: #333;
+        margin-top: 20px;
+        text-align: center;
+    ">
+        We handpick the freshest flowers daily from trusted local growers.
+        Whether it’s a birthday, celebration, wedding,
+        or simply a moment that needs magic,
+        we craft bouquets with care, creativity, and love.
+    </p>
 
-Our team enjoys mixing colors that feel warm, shapes that feel alive, and scents that remind you of gentle mornings. We also customize bouquets to match your feelings and occasions, because every customer is unique and so is every flower.
+    <p style="
+        font-size: 18px;
+        line-height: 1.8;
+        color: #333;
+        margin-top: 20px;
+        text-align: center;
+    ">
+        Our team brings together warm colors, lively shapes,
+        and fragrances that feel like gentle mornings.
+        We also happily customize bouquets to match your unique feelings and special occasions.
+    </p>
 
-At Blossom Lane, we don’t just sell flowers.
-We help you share feelings beautifully.</p>
+    <p style="
+        font-size: 18px;
+        line-height: 1.8;
+        color: #d14984;
+        text-align: center;
+        margin-top: 25px;
+        font-weight: 600;
+    ">
+        At Blossom Lane, we don’t just sell flowers — 🌸  
+        we help you share feelings beautifully.
+    </p>
 
-{%endblock%}
+</div>
+
+<style>
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+{% endblock %}
