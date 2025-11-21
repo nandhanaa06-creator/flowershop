@@ -115,5 +115,41 @@
         Your cart is empty 💗
     </p>
 {% endif %}
+{% if cart %}
+<div style="
+    width:70%; 
+    margin:40px auto; 
+    padding:20px; 
+    background:white;
+    border-radius:12px; 
+    border:2px solid #d14984;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    text-align:right;
+">
+    <h2 style="
+        font-size:22px; 
+        color:#d14984; 
+        margin:0;
+        font-weight:700;
+    ">
+        Total: ₹ {{ total }}
+    </h2>
+</div>
+{% endif %}
+
+<div style="text-align:center; margin-top:30px; margin-bottom:40px;">
+    <a href="{% url 'checkout' %}" 
+       style="
+           background:#d14984; 
+           padding:12px 25px; 
+           color:white; 
+           border-radius:10px; 
+           text-decoration:none; 
+           font-weight:700;
+           box-shadow:0 3px 6px rgba(0,0,0,0.15);
+       ">
+        Proceed to Checkout 💗
+    </a>
+</div>
 
 {% endblock %}

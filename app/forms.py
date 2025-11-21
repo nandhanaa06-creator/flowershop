@@ -1,7 +1,7 @@
 from django import forms
 from .models import Product,Category
 from django.contrib.auth.models import User
-from .models import Profile
+
 
 class ProductForm(forms.ModelForm):
     class Meta:
@@ -23,18 +23,6 @@ class CategoryForm(forms.ModelForm):
 
 
 
-class UserUpdateForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['username', 'email']
 
-class ProfileUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ['image']
-        widgets = {
-            'image': forms.ClearableFileInput(attrs={
-                'id': 'file-upload',      # give it ID
-                'style': 'display:none;'  # hide it
-            })
-        }
+
+   

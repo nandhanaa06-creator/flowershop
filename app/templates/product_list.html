@@ -1,6 +1,69 @@
 {%extends "base.html" %}
 {% block content %}
     <h1>Product List</h1>
+    <style>
+        .product-info {
+    padding: 18px;
+    text-align: center;
+}
+
+.product-info h3 {
+    color: #741852;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 1.3em;
+    text-transform: capitalize;
+}
+
+.product-price {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #d11b79;
+    margin-bottom: 8px;
+}
+
+.product-info p {
+    color: #555;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Category */
+.product-info p:last-child {
+    font-size: 13px;
+    color: #8a1f47;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* Make product card clickable only inside area */
+.card-link {
+    text-decoration: n
+}
+.product-info h3:hover {
+    color: #d11b79;
+    transform: scale(1.03);
+    transition: 0.2s;
+}
+.product-card a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.product-card a:hover {
+    text-decoration: none !important;
+    color: #d11b79;
+}
+.product-info h3 a {
+    font-weight: 700;
+    color: #741852;
+}
+
+.product-info h3 a:hover {
+    color: #d11b79;
+}
+
+    </style>
 <div class="add-btn-container">
     {% if user.is_staff or user.is_superuser %}
     <a class="action-btn create-btn" href="{% url 'create_product' %}">add items</a>

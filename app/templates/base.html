@@ -16,7 +16,7 @@
     }
 
     body {
-      background:url('{% static 'image/garden2.webp' %}') no-repeat center center/cover;
+      background-color:#f5eff0
       color: #2c3e50;
       padding: 0 0 50px;
     
@@ -26,7 +26,7 @@
 
     /* ====== NAVBAR ====== */
     nav {
-      background: linear-gradient(135deg, #1abc9c, #16a085);
+      background: linear-gradient(135deg, #330119, #811f53);
       color: #ecf0f1;
       display: flex;
       justify-content: space-between;
@@ -41,7 +41,7 @@
     }
 
     nav:hover {
-      background: linear-gradient(135deg, #16a085, #1abc9c);
+      background: linear-gradient(135deg, #efa0c9, #39031f);
       transform: translateY(1px);
     }
 
@@ -53,6 +53,14 @@
       cursor: pointer;
       text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
     }
+ nav .logo {
+    text-decoration: none !important;
+}
+nav .logo::after {
+    display: none !important;
+}
+
+
 
     .nav-links {
       display: flex;
@@ -129,7 +137,7 @@
       content: "";
       width: 80px;
       height: 4px;
-      background: #1abc9c;
+      background: #cd177b;
       display: block;
       margin: 10px auto 0;
       border-radius: 10px;
@@ -176,7 +184,7 @@
     }
 
     .product-info h3 {
-      color: #16a085;
+      color: #741852;
       margin-bottom: 8px;
       font-weight: 600;
       font-size: 1.2em;
@@ -184,7 +192,7 @@
 
     .product-price {
       font-weight: 600;
-      color: #28a745;
+      color: #ab0e5a;
       margin-bottom: 8px;
     }
 
@@ -284,8 +292,8 @@
     }
 
     .form-control:focus {
-      border-color: #1abc9c;
-      box-shadow: 0 0 8px rgba(26, 188, 156, 0.25);
+      border-color: #af0e54;
+      box-shadow: 0 0 8px rgba(73, 4, 40, 0.002);
       outline: none;
     }
 
@@ -294,14 +302,14 @@
       font-size: 16px;
       border-radius: 8px;
       border: none;
-      background-color: #1abc9c;
+      background-color: #bc1060;
       color: #fff;
       transition: background-color 0.3s ease, transform 0.2s ease;
       cursor: pointer;
     }
 
     .btn:hover {
-      background-color: #16a085;
+      background-color: #8a1248;
       transform: scale(1.05);
     }
 
@@ -364,8 +372,8 @@
 .product-form input:focus,
 .product-form textarea:focus,
 .product-form select:focus {
-  border-color: #1abc9c;
-  box-shadow: 0 0 5px rgba(26, 188, 156, 0.3);
+  border-color: #ed1b68;
+  box-shadow: 0 0 5px rgba(96, 1, 42, 0.3);
 }
 
 .product-form textarea {
@@ -375,7 +383,7 @@
 
 
 .save-btn {
-  background-color: #1abc9c;
+  background-color: #ba2b6e;
   color: #fff;
   border: none;
   padding: 12px 40px;
@@ -389,7 +397,7 @@
 }
 
 .save-btn:hover {
-  background-color: #16a085;
+  background-color: #b81379;
   transform: scale(1.05);
 }
 
@@ -426,7 +434,7 @@
     font-weight: bold;
 }
 .cart-btn {
-    background: linear-gradient(135deg, #16c79a, #0e9b76);
+    background: linear-gradient(135deg, #e463aa, #f3048b);
     padding: 8px 18px;
     border-radius: 8px;
     color: white !important;
@@ -511,7 +519,6 @@
 
 .upload-btn {
     background: #ea3d76;
-    color: rgb(254, 252, 253);
     padding: 10px 22px;
     border-radius: 10px;
     font-size: 15px;
@@ -523,9 +530,10 @@
 }
 
 .upload-btn:hover {
-    background: #f7e6ed;
+    background: #dc1668;
     transform: scale(1.03);
 }
+
 
  
   </style>
@@ -533,7 +541,7 @@
 
 <body>
   <nav>
-    <div class="logo">🌸 Flower Store</div>
+    <a href="{% url 'home' %}" class="logo"> 🌸 Flower Store 🌸</a>
     <div class="menu-toggle" id="menu-toggle">
       <span></span>
       <span></span>

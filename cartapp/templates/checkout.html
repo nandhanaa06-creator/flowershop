@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 style="text-align:center; color:#d14984; margin-top:30px;">Checkout 💗</h1>
+
+<div style="width:70%; margin:30px auto; padding:25px; background:white; border-radius:15px; border:2px solid #f7b6c6;">
+
+    <h2 style="color:#d14984;">Billing Details</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Full Name</label>
+        <input type="text" name="full_name" required class="form-control">
+
+        <label>Email</label>
+        <input type="email" name="email" required class="form-control">
+
+        <label>Phone</label>
+        <input type="text" name="phone" required class="form-control">
+
+        <label>Address</label>
+        <textarea name="address" required></textarea>
+
+        <label>City</label>
+        <input type="text" name="city" required class="form-control">
+
+        <label>State</label>
+        <input type="text" name="state" required class="form-control">
+
+        <label>Pincode</label>
+        <input type="text" name="pincode" required class="form-control">
+
+        <label>Payment Method</label>
+        <select name="payment_method">
+            <option value="COD">Cash on Delivery</option>
+            <option value="Online">Online Payment</option>
+        </select>
+
+        <h2 style="margin-top:20px; color:#d14984;">Total: ₹ {{ total }}</h2>
+
+        <button style="
+            background:#d14984; 
+            color:white; 
+            padding:10px 20px; 
+            border:none; 
+            border-radius:10px;
+            margin-top:20px;
+            font-weight:bold;
+        ">
+            Place Order 💐
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

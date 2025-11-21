@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="
+    width:60%; 
+    margin:60px auto; 
+    background:white; 
+    padding:40px; 
+    border-radius:15px; 
+    border:2px solid #f7b6c6;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+">
+
+    <h1 style="
+        color:#d14984; 
+        font-size:32px; 
+        font-weight:700;
+    ">
+        Order Placed Successfully 💗
+    </h1>
+
+    <div style="
+        width:80px; 
+        height:4px; 
+        background:#f7b6c6; 
+        margin:15px auto;
+        border-radius:10px;
+    "></div>
+
+    <h2 style="color:#b7376f; margin-top:20px;">
+        Thank you for your order, {{ order.full_name }}!
+    </h2>
+
+    <p style="font-size:18px; color:#444; margin-top:10px;">
+        Your order has been received and is now being processed.
+    </p>
+
+    <p style="font-size:20px; font-weight:700; color:#d14984; margin-top:20px;">
+        Order ID: #{{ order.id }}
+    </p>
+
+    <p style="font-size:20px; font-weight:700; color:#d14984;">
+        Total Paid: ₹ {{ order.total_price }}
+    </p>
+
+    <div style="margin-top:40px;">
+        <a href="{% url 'home' %}" 
+           style="
+               background:#d14984; 
+               padding:12px 25px; 
+               color:white; 
+               border-radius:10px; 
+               text-decoration:none; 
+               font-weight:700;
+               margin-right:10px;
+           ">
+            Back to Home 🏡
+        </a>
+
+        <a href="{% url 'view_single_order' order.id %}" class="btn btn-primary"
+           style="
+               background:#ff6f91; 
+               padding:12px 25px; 
+               color:white; 
+               border-radius:10px; 
+               text-decoration:none; 
+               font-weight:700;
+           ">
+            View My Orders 📦
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

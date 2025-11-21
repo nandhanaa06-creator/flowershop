@@ -43,19 +43,12 @@
     <img src="{{ profile_form.instance.image.url }}" 
          style="width:100px; height:100px; border-radius:50%; object-fit:cover;
          border:3px solid #f12d5e; margin:10px auto; display:block;">
-
+    
     <!-- Pink Button -->
-    <label for="file-upload" class="upload-btn">Choose New Image</label>
+    <label for="file-upload" class="upload-btn" style="color:#ffffff">Choose New Image</label>
 
     {{ profile_form.image }}   <!-- this is hidden via forms.py -->
 </div>
-
-
-
-
-
-
-
         <button type="submit" class="save-btn">Save Changes</button>
     </form>
 </div>

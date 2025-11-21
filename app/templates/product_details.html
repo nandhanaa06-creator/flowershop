@@ -3,12 +3,7 @@
 {% block content %}
 
 <!-- Background Image -->
-    <div style="
-    background: url('{% static 'image/garden2.webp' %}') no-repeat center center/cover;
-    width: 100%;
-    min-height: 100vh;
-    padding: 60px 0;
-    ">
+   
 
 
     <!-- Card -->
@@ -61,8 +56,13 @@
             margin-bottom: 30px;
         ">
             {{ prod.description }}
+           
         </p>
-
+        
+         <a class="cart-btn" href="{% url 'add_to_cart' prod.id %}">Add to Cart</a><br>
+        
+        <br>
+        <br>
         <!-- Back Button -->
         <a href="{% url 'product' %}"
            style="

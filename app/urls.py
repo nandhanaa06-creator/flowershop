@@ -1,56 +1,30 @@
 from django.contrib import admin
 from django.urls import path    
 from.import views
-from django.contrib.auth import views as auth_views
+
 
 
 
 urlpatterns = [
-    path('',views.home,name="home"),
-    path('about/',views.about,name="about"),
-    path('login/',views.login,name="login"),
-    path('signup/',views.signup,name="signup"),
-    path('contact/',views.contact_view,name="contact"),
-    path('product',views.product_list,name='product'),
-    path('create/',views.product_create,name='create_product'),
-    path('delete/<int:pk>/',views.product_delete,name='product_delete'),
-    path('update/<int:pk>/',views.product_update,name='product_update'),
-    path('details/<int:pk>/',views.product_details,name='product_details'),
-    
-    path('cart/', views.cart_page, name='cart'),
-    path("add-to-cart/<int:product_id>/", views.add_to_cart, name="add_to_cart"),
-    path("remove-from-cart/<int:product_id>/", views.remove_from_cart, name="remove_from_cart"),
-
-    path('logout/',views.signout,name="logout"),
-
+     path('',views.home,name="home"),
+     path('about/',views.about,name="about"),
+   
+     path('contact/',views.contact_view,name="contact"),
+     path('product',views.product_list,name='product'),
+     path('create/',views.product_create,name='create_product'),
+     path('delete/<int:pk>/',views.product_delete,name='product_delete'),
+     path('update/<int:pk>/',views.product_update,name='product_update'),
+     path('details/<int:pk>/',views.product_details,name='product_details'),
 
     
-    
-    path('categories/', views.category_list, name='category_list'),
-    path('category/create/', views.category_create, name='category_create'),
-    path('category/<int:pk>/update/', views.category_update, name='category_update'),
-    path('category/<int:pk>/delete/', views.category_delete, name='category_delete'),
-    path('category/<int:category_id>/', views.category_products, name='category_products'),
-    
-     path('password-reset/',
-         auth_views.PasswordResetView.as_view(template_name="password_reset.html"),
-         name='password_reset'),
 
-    path('password-reset/done/',
-         auth_views.PasswordResetDoneView.as_view(template_name="password_reset_done.html"),
-         name='password_reset_done'),
 
-    path('password-reset-confirm/<uidb64>/<token>/',
-         auth_views.PasswordResetConfirmView.as_view(template_name="password_reset_confirm.html"),
-         name='password_reset_confirm'),
-
-    path('password-reset-complete/',
-         auth_views.PasswordResetCompleteView.as_view(template_name="password_reset_complete.html"),
-         name='password_reset_complete'),
-    path('cart/increase/<str:id>/', views.increase_qty, name='increase_qty'),
-    path('cart/decrease/<str:id>/', views.decrease_qty, name='decrease_qty'),
-    
-    path('profile/', views.profile, name='profile'),
-    path('profile/edit/', views.edit_profile, name='edit_profile'),
-
-]
+     
+     
+     path('categories/', views.category_list, name='category_list'),
+     path('category/create/', views.category_create, name='category_create'),
+     path('category/<int:pk>/update/', views.category_update, name='category_update'),
+     path('category/<int:pk>/delete/', views.category_delete, name='category_delete'),
+     path('category/<int:category_id>/', views.category_products, name='category_products'),
+     
+]       
